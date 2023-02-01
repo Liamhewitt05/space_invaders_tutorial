@@ -10,7 +10,7 @@ test_font = pygame.font.Font('font.ttf',50)
 sky_surface = pygame.image.load('sky.png').convert_alpha()
 ground_surface = pygame.image.load('ground.png').convert_alpha()
 
-score_surf = test_font.render('My game', False, 'Black')
+score_surf = test_font.render('My game', False, (64,64,64))
 score_rect = score_surf.get_rect(center = (400,50))
 
 snail_surf = pygame.image.load('snail1.png').convert_alpha()
@@ -28,9 +28,11 @@ while True:
             #if player_rect.collidepoint(event.pos):
                 #print('collision')
     screen.blit(sky_surface, (0,0))
-    pygame.draw.rect(screen,'pink',score_rect,16,80,-80,20,20,20)
     screen.blit(ground_surface, (0,300))
+    pygame.draw.rect(screen,'#c0e8ec',score_rect)
+    pygame.draw.ellipse(screen,'Brown',pygame.Rect(50,200,100,100))
     screen.blit(score_surf, score_rect)
+
 
     snail_rect.x -=4
     if snail_rect.right <= 0:
@@ -38,7 +40,8 @@ while True:
     screen.blit(snail_surf,snail_rect)
     screen.blit(player_surf,player_rect)
 
-
+    keys = pygame.key.get_pressed()
+    keys[pygame.K_SPACE]
 
     #if player_rect.colliderect(snail_rect):
         #print('collision')
